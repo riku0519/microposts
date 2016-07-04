@@ -1,0 +1,10 @@
+
+<div class="panel panel-info"><h1><%= link_to "followers", followers_user_path(@user) %></h1></a></div>
+
+<h2><%= @user.name %></h2>
+<br>
+<h2><% @users.each do |user| %></h2>
+  <h2><%= user.name %><br></h2>
+<% end %>
+
+
