@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.order(created_at: :desc)
   end
   
+  
   def new
     @user = User.new
   end
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
     @title = 'follower'
     render 'show_follower'
   end
+  
 
   private
 
@@ -61,3 +63,5 @@ class UsersController < ApplicationController
     redirect_to root_path if @user != current_user
   end
 end
+
+  

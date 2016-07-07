@@ -20,10 +20,23 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
   
-
+  def favorite
+    micropost = Micropost.find(params[:id])
+    current_user.favorite_relationships.find_or_create_by(micropost_id: micropost.id)
+  end
   
+  
+  def unfavorite(micropost)
+    favorite_relationship = current_user.favorite_relationships.find_by(micropost_id: micropost.id)
+    favorite_relationship.destroy if favorite_relationship
+  end
+
+
+
   private
+  
   def micropost_params
     params.require(:micropost).permit(:content)
   end
+  
 end
